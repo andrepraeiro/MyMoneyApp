@@ -7,6 +7,10 @@ const server = express()
 server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json())
 
+server.get('/', function (req, res){
+    res.send('<a href="/api/billingCycles">billingCycles</a>')
+})
+
 server.listen(port, function() {
     console.log(`BACKEND is runnig on port ${port}.`)
 })
