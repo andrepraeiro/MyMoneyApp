@@ -44,4 +44,4 @@ class BillinCycleForm extends Component {
     }
 }
 
-export default reduxForm({ form: 'billingCycleForm' })(BillinCycleForm)
+export default reduxForm({ form: 'billingCycleForm', destroyOnUnmount: false })(BillinCycleForm)
