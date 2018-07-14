@@ -2,7 +2,7 @@ import axios from 'axios'
 import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
-import consts from './billingCycleConsts'
+import {billingCycleForm, tabList, tabCreate, tabUpdate} from './billingCycleConsts'
 import {billingCycleFetchedActionType} from './billingCycleActionsType'
 
 const BASE_URL = 'http://localhost:3003/api'
@@ -22,10 +22,10 @@ export function create(values) {
             .then(resp => {
                 toastr.success('Sucesso', 'Operação realizada com sucesso.')
                 dispatch([
-                    resetForm(consts.billingCycleForm),
+                    resetForm(billingCycleForm),
                     getList(),
-                    selectTab(consts.tabList),
-                    showTabs(consts.tabList, consts.tabCreate)
+                    selectTab(tabList),
+                    showTabs(tabList, tabCreate)
                 ])
             })
             .catch(e => {
@@ -36,8 +36,8 @@ export function create(values) {
 
 export function showUpdate(billingCycle) {
     return [
-        showTabs(consts.tabUpdate),
-        selectTab(consts.tabUpdate),
-        initialize(consts.billingCycleForm, billingCycle)
+        showTabs(tabUpdate),
+        selectTab(tabUpdate),
+        initialize(billingCycleForm, billingCycle)
     ]
 }

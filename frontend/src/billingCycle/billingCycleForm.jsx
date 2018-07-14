@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
 import labelAndInput from '../common/form/labelAndInput'
-import consts from './billingCycleConsts'
+import {billingCycleForm} from './billingCycleConsts'
 
 class BillinCycleForm extends Component {
     render() {
@@ -45,4 +45,4 @@ class BillinCycleForm extends Component {
     }
 }
 
-export default reduxForm({ form: consts.billingCycleForm, destroyOnUnmount: false })(BillinCycleForm)
+export default reduxForm({ form: billingCycleForm, destroyOnUnmount: false })(BillinCycleForm)

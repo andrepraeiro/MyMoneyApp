@@ -6,4 +6,9 @@ const consts = {
     tabList: 'tabList'
 }
 
+export const billingCycleForm = 'billingCycleForm'
+export const tabUpdate = 'tabUpdate'
+export const tabCreate = 'tabCreate'
+export const tabDelete =  'tabDelete'
+export const tabList = 'tabList'
 export default consts

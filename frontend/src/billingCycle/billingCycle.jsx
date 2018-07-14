@@ -13,12 +13,12 @@ import { selectTab, showTabs } from '../common/tab/tabActions'
 import List from './billingCycleList'
 import Form from './billingCycleForm'
 import { create } from './billingCycleActions'
-import consts from './billingCycleConsts'
+import {tabCreate, tabDelete, tabList, tabUpdate} from './billingCycleConsts'
 
 class BillingCycle extends Component {
     componentWillMount() {
-        this.props.selectTab(consts.tabList)
-        this.props.showTabs(consts.tabList, consts.tabCreate)
+        this.props.selectTab(tabList)
+        this.props.showTabs(tabList, tabCreate)
     }
 
     render() {
@@ -28,22 +28,22 @@ class BillingCycle extends Component {
                 <Content>
                     <Tabs>
                         <TabsHeader>
-                            <TabHeader label="Listar" icon="bars" target={consts.tabList} />
-                            <TabHeader label="Incluir" icon="plus" target={consts.tabCreate} />
-                            <TabHeader label="Alterar" icon="pencil" target={consts.tabUpdate} />
-                            <TabHeader label="Excluir" icon="trash-o" target={consts.tabDelete} />
+                            <TabHeader label="Listar" icon="bars" target={tabList} />
+                            <TabHeader label="Incluir" icon="plus" target={tabCreate} />
+                            <TabHeader label="Alterar" icon="pencil" target={tabUpdate} />
+                            <TabHeader label="Excluir" icon="trash-o" target={tabDelete} />
                         </TabsHeader>
                         <TabsContent>
-                            <TabContent id={consts.tabList}>
+                            <TabContent id={tabList}>
                                 <List />
                             </TabContent>
-                            <TabContent id={consts.tabCreate}>
+                            <TabContent id={tabCreate}>
                                 <Form onSubmit={this.props.create} />
                             </TabContent>
-                            <TabContent id={consts.tabUpdate}>
+                            <TabContent id={tabUpdate}>
                                 <Form />
                             </TabContent>
-                            <TabContent id={consts.tabDelete}>
+                            <TabContent id={tabDelete}>
                                 <h1>Excluir</h1>
                             </TabContent>
                         </TabsContent>
