@@ -13,11 +13,12 @@ import { selectTab, showTabs } from '../common/tab/tabActions'
 import List from './billingCycleList'
 import Form from './billingCycleForm'
 import { create } from './billingCycleActions'
+import consts from './billingCycleConsts'
 
 class BillingCycle extends Component {
     componentWillMount() {
-        this.props.selectTab('tabList')
-        this.props.showTabs('tabList', 'tabCreate')
+        this.props.selectTab(consts.tabList)
+        this.props.showTabs(consts.tabList, consts.tabCreate)
     }
 
     render() {
@@ -33,16 +34,16 @@ class BillingCycle extends Component {
                             <TabHeader label="Excluir" icon="trash-o" target="tabDelete" />
                         </TabsHeader>
                         <TabsContent>
-                            <TabContent id="tabList">
+                            <TabContent id={consts.tabList}>
                                 <List />
                             </TabContent>
-                            <TabContent id="tabCreate">
+                            <TabContent id={consts.tabCreate}>
                                 <Form onSubmit={this.props.create} />
                             </TabContent>
-                            <TabContent id="tabUpdate">
+                            <TabContent id={consts.tabUpdate}>
                                 <Form />
                             </TabContent>
-                            <TabContent id="tabDelete">
+                            <TabContent id={consts.tabDelete}>
                                 <h1>Excluir</h1>
                             </TabContent>
                         </TabsContent>
