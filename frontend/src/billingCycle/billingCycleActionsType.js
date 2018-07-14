@@ -1,0 +1,1 @@
+export const billingCycleFetchedActionType = 'BILLING_CYCLES_FETCHED'

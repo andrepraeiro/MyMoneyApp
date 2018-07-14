@@ -3,13 +3,14 @@ import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
 import consts from './billingCycleConsts'
+import {billingCycleFetchedActionType} from './billingCycleActionsType'
 
 const BASE_URL = 'http://localhost:3003/api'
 
 export function getList() {
     const request = axios.get(`${BASE_URL}/billingCycles`)
     return {
-        type: 'BILLING_CYCLES_FETCHED',
+        type: billingCycleFetchedActionType,
         payload: request
     }
 }
