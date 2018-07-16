@@ -1,9 +1,14 @@
 import React, { Component } from 'react'
 import { reduxForm, Field } from 'redux-form'
-import labelAndInput from '../common/form/labelAndInput'
-import {billingCycleForm} from './billingCycleConsts'
+import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
 
-class BillinCycleForm extends Component {
+import {init} from './billingCycleActions'
+
+import labelAndInput from '../common/form/labelAndInput'
+import { billingCycleForm } from './billingCycleConsts'
+
+class BillingCycleForm extends Component {
     render() {
         const { handleSubmit } = this.props
         return (
@@ -15,7 +20,6 @@ class BillinCycleForm extends Component {
                         label="Nome"
                         cols="12 4"
                         placeholder="Informe o nome"
-                        
                     />
                     <Field
                         name="month"
@@ -32,12 +36,15 @@ class BillinCycleForm extends Component {
                         type="number"
                         label="Ano"
                         cols="12 4"
-                        placeholder="Informe o ano"                        
+                        placeholder="Informe o ano"
                     />
                 </div>
                 <div className="box-footer">
                     <button type="submit" className="btn btn-primary">
                         Submit
+                    </button>
+                    <button type="button" className="btn btn-default" onClick={this.props.init}>
+                        Cancelar
                     </button>
                 </div>
             </form>
@@ -45,4 +52,6 @@ class BillinCycleForm extends Component {
     }
 }
 
-export default reduxForm({ form: billingCycleForm, destroyOnUnmount: false })(BillinCycleForm)
+BillingCycleForm = reduxForm({ form: billingCycleForm, destroyOnUnmount: false })(BillingCycleForm)
+const mapDispatchToProps = dispatch => bindActionCreators({init}, dispatch)
+export default connect(null, mapDispatchToProps)(BillingCycleForm)
