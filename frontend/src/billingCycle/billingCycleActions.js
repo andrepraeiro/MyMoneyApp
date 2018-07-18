@@ -2,7 +2,7 @@ import axios from 'axios'
 import { toastr } from 'react-redux-toastr'
 import { reset as resetForm, initialize } from 'redux-form'
 import { showTabs, selectTab } from '../common/tab/tabActions'
-import { billingCycleForm, tabList, tabCreate, tabUpdate } from './billingCycleConsts'
+import { billingCycleForm, tabList, tabCreate, tabUpdate, tabDelete } from './billingCycleConsts'
 import { billingCycleFetchedActionType } from './billingCycleActionsType'
 
 const BASE_URL = 'http://localhost:3003/api'
@@ -24,6 +24,10 @@ export function update(values) {
     return submit(values, 'put')
 }
 
+export function remove(values) {
+    return submit(values, 'delete')
+}
+
 function submit(values, method) {
     return dispatch => {
         const id = values._id ? values._id : ''
@@ -40,6 +44,10 @@ function submit(values, method) {
 
 export function showUpdate(billingCycle) {
     return [showTabs(tabUpdate), selectTab(tabUpdate), initialize(billingCycleForm, billingCycle)]
+}
+
+export function showDelete(billingCycle) {
+    return [showTabs(tabDelete), selectTab(tabDelete), initialize(billingCycleForm, billingCycle)]
 }
 
 export function init() {
