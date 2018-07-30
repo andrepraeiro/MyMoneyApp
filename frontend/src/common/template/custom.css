@@ -11,3 +11,7 @@ button {
 .table-actions {
     width: 150px;
 }
+
+th, td {
+    padding-right: 2px;
+}
