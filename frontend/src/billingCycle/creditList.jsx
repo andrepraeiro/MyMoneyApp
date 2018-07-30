@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { Field, arrayInsert } from 'redux-form'
+import { Field, arrayInsert, arrayRemove } from 'redux-form'
 
 import Grid from '../common/layout/grid'
 import Input from '../common/form/input'
@@ -11,6 +11,12 @@ class CreditList extends Component {
     add(index, item = {}) {
         if (!this.props.readOnly) {
             this.props.arrayInsert(billingCycleForm, 'credits', index, item)
+        }
+    }
+
+    remove(index) {
+        if (!this.props.readOnly && this.props.list.length > 1) {
+            this.props.arrayRemove(billingCycleForm, 'credits', index)
         }
     }
     renderRows() {
@@ -48,6 +54,13 @@ class CreditList extends Component {
                     >
                         <i className="fa fa-clone" />
                     </button>
+                    <button
+                        type="button"
+                        className="btn btn-danger"
+                        onClick={() => this.remove(index)}
+                    >
+                        <i className="fa fa-trash-o" />
+                    </button>
                 </td>
             </tr>
         ))
@@ -74,7 +87,7 @@ class CreditList extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({ arrayInsert }, dispatch)
+const mapDispatchToProps = dispatch => bindActionCreators({ arrayInsert, arrayRemove }, dispatch)
 export default connect(
     null,
     mapDispatchToProps
